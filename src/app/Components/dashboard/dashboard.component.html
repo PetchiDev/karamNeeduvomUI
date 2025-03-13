@@ -79,6 +79,7 @@
             padding: 3px 8px;
             border-radius: 5px;
             display: inline-block;
+            cursor: pointer;
         }
 
         .donation-form {
@@ -233,20 +234,22 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">KaramNeeduvom</a>
+            <img src="../../../assets/HandsLogo.png" alt="Logo" class="logo" />
+            <a class="navbar-brand" routerLink="/">KaramNeeduvom</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">Donate</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" routerLink="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" routerLink="/">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" routerLink="/">Donate</a></li>
+                    <li class="nav-item"><a class="nav-link" routerLink="/">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <!-- Main Content -->
     <div class="container">
         <div class="row">
@@ -293,6 +296,14 @@
                         </div>
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">Contact Number</label>
+                        <input type="number" class="form-control" formControlName="contact"
+                            [ngClass]="{'is-invalid': ContactControl?.invalid && ContactControl?.touched}">
+                        <div *ngIf="ContactControl?.invalid && ContactControl?.touched" class="invalid-feedback">
+                            <div *ngIf="ContactControl?.errors?.['required']">contact is required</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Upload Image</label>
                         <div class="upload-box" (click)="!selectedFile && fileInput.click()"
                             [ngClass]="{'has-file': selectedFile}">
@@ -331,7 +342,8 @@
                         <div class="ms-3">
                             <h6 class="fw-bold">{{ donation.itemName }}</h6>
                             <p>{{ donation.description }}</p>
-                            <span class="location-tag" (click)="navigateLocation(donation.location)">📍 {{ donation.location }}</span>
+                            <span class="location-tag" (click)="navigateLocation(donation.location)">📍 {{
+                                donation.location }}</span>
                         </div>
                     </div>
                 </div>

@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
       itemName: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(10)]],
       location: ['', Validators.required],
+      contact: ['', Validators.required],
       file: [null]
     });
   }
@@ -83,6 +84,7 @@ export class DashboardComponent implements OnInit {
     formData.append('ItemName', this.donationForm.get('itemName')?.value);
     formData.append('Description', this.donationForm.get('description')?.value);
     formData.append('Location', this.donationForm.get('location')?.value);
+    formData.append('ContactNumber', this.donationForm.get('contact')?.value);
     if (this.selectedFile) {
       formData.append('File', this.selectedFile, this.selectedFile.name);
     }
@@ -113,4 +115,5 @@ export class DashboardComponent implements OnInit {
   get itemNameControl() { return this.donationForm.get('itemName'); }
   get descriptionControl() { return this.donationForm.get('description'); }
   get locationControl() { return this.donationForm.get('location'); }
+  get ContactControl() { return this.donationForm.get('contact'); }
 }

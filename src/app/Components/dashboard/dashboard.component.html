@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KaramNeeduvom - Donation Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            background-color: #f8f9fc;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(to right, #2264d1, #3b82f6);
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            color: white !important;
+            margin-right: 10px;
+        }
+
+        .nav-link.active {
+            background: white;
+            color: #2264d1 !important;
+            border-radius: 20px;
+            padding: 5px 15px;
+        }
+
+        .donation-form,
+        .recent-donations {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background: #2264d1;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: #1a4ea3;
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f8f9fc;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .donation-img {
+            width: 50px;
+            /* Adjust size as needed */
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .location-tag {
+            font-size: 12px;
+            background: #e3f2fd;
+            color: #2264d1;
+            padding: 3px 8px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .donation-form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #2264d1, #3b82f6);
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(to right, #1a4ea3, #2264d1);
+        }
+
+        .upload-box {
+            border: 2px dashed #d1d5db;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            background-color: #f8f9fc;
+            cursor: pointer;
+        }
+
+        .upload-box:hover {
+            background-color: #eef3ff;
+        }
+
+        .upload-box input {
+            display: none;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .donation-form,
+        .recent-donations {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #2264d1, #3b82f6);
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(to right, #1a4ea3, #2264d1);
+        }
+
+        .upload-box {
+            border: 2px dashed #d1d5db;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            background-color: #f8f9fc;
+            cursor: pointer;
+        }
+
+        .upload-box:hover {
+            background-color: #eef3ff;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .recent-donations .card {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .donation-form {
+            position: relative;
+        }
+
+        button#donation {
+            position: absolute;
+            width: 91%;
+            border-radius: 54px;
+            text-align: center;
+            bottom: -20px;
+        }
+
+        .donation-form,
+        .recent-donations {
+            margin-top: 43px;
+        }
+
+        .recent-donations {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-height: 510px;
+            /* Ensure it doesn't expand too much */
+            overflow: hidden;
+        }
+
+        .donations-scrollable {
+            max-height: 471px;
+            overflow-y: auto;
+            /* Enables vertical scrolling */
+            padding-right: 10px;
+            /* Avoids scroll overlap */
+        }
+
+        .donations-scrollable::-webkit-scrollbar {
+            width: 12px;
+            /* Thin scrollbar */
+        }
+
+        .donations-scrollable::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .donations-scrollable::-webkit-scrollbar-thumb {
+            background: #2264d1;
+            border-radius: 10px;
+        }
+
+        .donations-scrollable::-webkit-scrollbar-thumb:hover {
+            background: #1a4ea3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">KaramNeeduvom</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Donate</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 donation-form">
+                <h5 class="fw-bold">Create a Donation</h5>
+                <div *ngIf="submitSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+                    Donation submitted successfully!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                        (click)="submitSuccess = false"></button>
+                </div>
+                <div *ngIf="submitError" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ submitError }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                        (click)="submitError = null"></button>
+                </div>
+                <form [formGroup]="donationForm" (ngSubmit)="submitDonation()">
+                    <div class="mb-3">
+                        <label class="form-label">Item Name</label>
+                        <input type="text" class="form-control" formControlName="itemName"
+                            [ngClass]="{'is-invalid': itemNameControl?.invalid && itemNameControl?.touched}">
+                        <div *ngIf="itemNameControl?.invalid && itemNameControl?.touched" class="invalid-feedback">
+                            <div *ngIf="itemNameControl?.errors?.['required']">Item name is required</div>
+                            <div *ngIf="itemNameControl?.errors?.['minlength']">Item name must be at least 3 characters
+                                long</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" formControlName="description"
+                            [ngClass]="{'is-invalid': descriptionControl?.invalid && descriptionControl?.touched}"></textarea>
+                        <div *ngIf="descriptionControl?.invalid && descriptionControl?.touched"
+                            class="invalid-feedback">
+                            <div *ngIf="descriptionControl?.errors?.['required']">Description is required</div>
+                            <div *ngIf="descriptionControl?.errors?.['minlength']">Description must be at least 10
+                                characters long</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Location</label>
+                        <input type="text" class="form-control" formControlName="location"
+                            [ngClass]="{'is-invalid': locationControl?.invalid && locationControl?.touched}">
+                        <div *ngIf="locationControl?.invalid && locationControl?.touched" class="invalid-feedback">
+                            <div *ngIf="locationControl?.errors?.['required']">Location is required</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Upload Image</label>
+                        <div class="upload-box" (click)="!selectedFile && fileInput.click()"
+                            [ngClass]="{'has-file': selectedFile}">
+                            <input type="file" #fileInput (change)="onFileChange($event)" style="display: none;"
+                                accept="image/*">
+                            <div *ngIf="!selectedFile">
+                                <strong>Browse Files</strong> <br>
+                                <small>Drag & drop or click to upload</small>
+                            </div>
+                            <div *ngIf="selectedFile" class="selected-file">
+                                <div class="file-info">
+                                    <i class="bi bi-file-image me-2"></i>
+                                    <span>{{ selectedFile.name }} ({{ (selectedFile.size / 1024).toFixed(1) }}
+                                        KB)</span>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-danger delete-btn"
+                                    (click)="removeFile($event)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="donation" [disabled]="isSubmitting">
+                        <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-1" role="status"
+                            aria-hidden="true"></span>
+                        {{ isSubmitting ? 'Submitting...' : 'Donate Now' }}
+                    </button>
+                    <!-- <button type="button" class="btn btn-secondary ms-2" (click)="resetForm()">Reset</button> -->
+                </form>
+            </div>
+            <div class="col-md-5 recent-donations">
+                <h5 class="fw-bold">Recent Donations</h5>
+                <div class="donations-scrollable">
+                    <div *ngFor="let donation of donations" class="card d-flex flex-row align-items-center">
+                        <img [src]="donation.imageUrl" alt="Donation Image" class="donation-img">
+                        <div class="ms-3">
+                            <h6 class="fw-bold">{{ donation.itemName }}</h6>
+                            <p>{{ donation.description }}</p>
+                            <span class="location-tag" (click)="navigateLocation(donation.location)">📍 {{ donation.location }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+.upload-box {
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+  }
+  
+  .upload-box:hover {
+    border-color: #007bff;
+    background-color: #f1f8ff;
+  }
+  
+  .upload-box.has-file {
+    border-style: solid;
+    background-color: #e9f7ef;
+    cursor: default;
+  }
+  
+  .selected-file {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .file-info {
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+  
+  .delete-btn {
+    margin-left: 10px;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .delete-btn:hover {
+    background-color: #dc3545;
+    color: white;
+  }

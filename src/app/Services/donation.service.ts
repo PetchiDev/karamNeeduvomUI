@@ -8,6 +8,7 @@ export interface Donation {
   description: string;
   location: string;
   imageUrl?: string;
+  contact?:string;
 }
 
 @Injectable({

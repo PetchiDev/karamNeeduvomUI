@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   isSubmitting = false;
   submitError: string | null = null;
   submitSuccess = false;
+  
   constructor(
     private fb: FormBuilder,
     private donationService: DonationService
@@ -22,7 +23,7 @@ export class DashboardComponent implements OnInit {
       itemName: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(10)]],
       location: ['', Validators.required],
-      contact: ['', Validators.required],
+      contact: ['', Validators.required,Validators.minLength(10)],
       file: [null]
     });
   }
